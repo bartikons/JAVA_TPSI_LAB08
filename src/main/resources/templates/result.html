@@ -8,6 +8,7 @@
         <meta charset="UTF-8" />
     </head>
     <body>
+        <section layout:fragment="content">
         <h1>Wynik obliczeń</h1>
         <p th:object="${calculatorForm}">
             <span th:text="*{x}">2</span>
@@ -16,8 +17,6 @@
             =
             <span th:text="${result}">4</span>
         </p>
-        <p>
-            <a href="/">Fajnie było, jeszcze raz!</a>
-        </p>
+        </section>
     </body>
 </html>

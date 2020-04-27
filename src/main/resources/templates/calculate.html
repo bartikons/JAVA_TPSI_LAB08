@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorator="layout">
     <head>
-        <title>TODO supply a title</title>
+        <title>Power feature (płatny toolbox</title>
         <meta charset="UTF-8"/>
     </head>
     <body>
@@ -12,14 +12,22 @@
 
             <div>
                 <h2>Power feature (płatny toolbox)</h2>
-                <form action="/calculate" method="post">
-                    x = <input type="text" name="x" value="2" />
-                    y = <input type="text" name="y" value="2" />
-                    <select name="operation">
-                        <option>+</option>
-                        <option>-</option>
-                        <option>*</option>
-                    </select>
+                <form action="/calculate" method="post" th:object="${calculatorForm}">
+                    <p>
+                        x = <input type="text" th:field="*{x}" th:errorClass="error" required="" />
+                        <span th:if="${#fields.hasErrors('x')}" th:errors="*{x}">Błędne dane</span>
+                    </p>
+                    <p>
+                        y = <input type="text" th:field="*{y}" th:errorClass="error" required="" />
+                        <span th:if="${#fields.hasErrors('y')}" th:errors="*{y}">Błędne dane</span>
+                    </p>
+                    <p>
+                        <select name="operation">
+                            <option>+</option>
+                            <option>-</option>
+                            <option>*</option>
+                        </select>
+                    </p>
                     <input type="submit" value="Oblicz" />
                 </form>
             </div>
